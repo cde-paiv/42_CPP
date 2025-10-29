@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cde-paiv <cde-paiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/18 16:00:46 by cde-paiv          #+#    #+#              #
-#    Updated: 2025/06/26 13:18:52 by cde-paiv         ###   ########.fr        #
+#    Created: 2025/10/15 19:03:14 by cde-paiv          #+#    #+#              #
+#    Updated: 2025/10/15 19:07:46 by cde-paiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
-SRC = main.cpp Phonebook.cpp Contact.cpp
+NAME = a.out
+SRC = main.cpp Fixed.cpp
 
 CC = c++ -Wall -Wextra -Werror -std=c++98
 
