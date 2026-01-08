@@ -32,7 +32,7 @@ Form::Form(const std::string& name, int gs, int ge)
 }
 
 Form::Form(const Form& other)
-: _name(other._name), _isSigned(other._gradeToSign),
+: _name(other._name), _isSigned(other._isSigned),
 _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec)
 {
     std::cout << "[Form] copy-constructed: " << _name << std::endl; 

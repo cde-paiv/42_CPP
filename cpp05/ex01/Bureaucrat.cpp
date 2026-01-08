@@ -7,7 +7,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() {
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Bureaucrat: garde is to low (must be <= 150)";
+    return "Bureaucrat: grade is to low (must be <= 150)";
 }
 
 // ====== helpers =======
@@ -29,7 +29,7 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
     std::cout << "[Bureaucrat] copy-constructed: " << _name
-              << "(grade " << _grade << ")\n";
+              << " (grade " << _grade << ")\n";
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
@@ -75,6 +75,6 @@ void Bureaucrat::signForm(Form& form) const {
 
 // ======== operator<< =======
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) {
-    os << b.getname() << ", bureaucrat grade " << b.getgrade();
+    os << b.getname() << ", bureaucrat grade " << b.getgrade() << ".";
     return os;
 }
