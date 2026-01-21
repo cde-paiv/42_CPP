@@ -15,7 +15,7 @@ I have completed **CPP 00 to CPP 04** so far, and the remaining modules (CPP 05-
 | CPP 03 | Inheritance and class hierarchy | [Open](./cpp03) |
 | CPP 04 | Polymorphism and abstract classes | [Open](./cpp04) |
 | CPP 05 | Exception handling | [Open](./cpp05) |
-| CPP 06 | Type conversions and advanced class design | _In progress_ |
+| CPP 06 | Type conversions and advanced class design | [Open](./cpp06) |
 | CPP 07 | Templates & generic programming | _In progress_ |
 | CPP 08 | STL containers and algorithms | _In progress_ |
 | CPP 09 | Final practical applications | _In progress_ |
