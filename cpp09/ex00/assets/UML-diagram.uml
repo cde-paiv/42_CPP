@@ -1,0 +1,102 @@
+@startuml
+skinparam diagramMargin 40
+skinparam packageMargin 18
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+
+' =========================
+' LAYER 1: Application
+' =========================
+package "Application" {
+  class BitcoinExchange {
+    +run(inputFile)
+    -loadDatabase()
+    -processInput()
+    -processLine(line)
+  }
+}
+
+' =========================
+' LAYER 2: Parsing / Validation
+' =========================
+package "Parsing / Validation" {
+  class InputReader {
+    +open(path)
+    +nextLine() : string?
+  }
+
+  class LineParser {
+    +parse(line) : (dateStr, valueStr)?
+  }
+
+  class DateValidator {
+    +isValid(dateStr) : bool
+  }
+
+  class ValueValidator {
+    +check(valueStr) : Status
+  }
+
+  enum Status {
+    OK
+    NEGATIVE
+    TOO_LARGE
+    INVALID
+  }
+}
+
+' =========================
+' LAYER 3: Persistence / Rates
+' =========================
+package "Persistence / Rates" {
+  class CsvRateLoader {
+    +load(csvPath)
+  }
+
+  class RateRepository {
+    -rates : ordered
+    +insert(date, rate)
+    +getExactOrLower(date) : rate?
+  }
+
+  class RateFinder {
+    +find(dateStr, repo) : rate?
+  }
+}
+
+' =========================
+' Output
+' =========================
+package "Output" {
+  class Output {
+    +result(date, value, result)
+    +error(message)
+  }
+}
+
+' =========================
+' Relations (clean)
+' =========================
+BitcoinExchange --> CsvRateLoader : load DB
+BitcoinExchange --> RateRepository : store rates
+CsvRateLoader --> RateRepository : fill
+
+BitcoinExchange --> InputReader : read file
+BitcoinExchange --> LineParser : parse
+BitcoinExchange --> DateValidator : validate date
+BitcoinExchange --> ValueValidator : validate value
+
+BitcoinExchange --> RateFinder : get rate
+RateFinder --> RateRepository : exact/lower lookup
+
+BitcoinExchange --> Output : print
+ValueValidator --> Status
+
+note right of RateRepository
+Ordered container required:
+- exact date
+- closest LOWER date
+end note
+
+@enduml
