@@ -19,15 +19,15 @@ private:
     void loadDatabase(const std::string& csvPath);
     void processInputFile(const std::string& inputFilePath);
 
-    bool    parseinputLine(const std::string& line, std::string& dateOut, std::string& valueOut);
-    
-    bool    isValidDate(const std::string& date) const;
-    bool    isLeapYear(int y) const;
-    int     daysInMonth(int y, int m) const;
+    bool parseInputLine(const std::string& line, std::string& dateOut, std::string& valueOut) const;
 
-    bool    parseValue(const std::string& valueStr, double& valueOut, std::string& errMsg) const;
+    bool isValidDate(const std::string& date) const;
+    bool isLeapYear(int y) const;
+    int  daysInMonth(int y, int m) const;
 
-    bool    findRateForDate(const std::string& date, double& ratOut) const;
+    bool parseValue(const std::string& valueStr, double& valueOut, std::string& errMsg) const;
+
+    bool findRateForDate(const std::string& date, double& rateOut) const;
 
     static std::string trim(const std::string& s);
 };
